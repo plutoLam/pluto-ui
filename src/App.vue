@@ -12,3 +12,10 @@ import { PlButton } from "./components/Button";
   <pl-button color="yellow" round plain icon="message"></pl-button>
   <pl-button color="red" round icon="delete"></pl-button>
 </template>
+
+<style>
+.box {
+  top: auto;
+  position: absolute;
+}
+</style>
