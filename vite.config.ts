@@ -1,7 +1,6 @@
 import { defineConfig } from "vite";
 import pluginVue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
-import unocss from "./config/unocss";
 import { UserConfig } from "vite";
 import dts from "vite-plugin-dts";
 
@@ -19,7 +18,6 @@ export const config = {
   plugins: [
     pluginVue(),
     vueJsx(),
-    unocss(),
     dts({
       outputDir: "./dist/types",
       insertTypesEntry: false, // 插入TS 入口
