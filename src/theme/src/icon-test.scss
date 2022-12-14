@@ -1,0 +1,124 @@
+@use "mixins/mixins" as *;
+
+@include b(icon) {
+  --color: inherit;
+  // height: 1em;
+  // width: 1em;
+  // line-height: 1em;
+  // display: inline-flex;
+  // justify-content: center;
+  // align-items: center;
+  // position: relative;
+  // fill: currentColor; /* 常规css中是没有fill属性的，只在XML-CSS中存在，用于设置当前元素的填充内容，例如颜色，图片 */
+  // color: var(--color);
+  // font-size: inherit;
+
+  svg {
+    height: 1em;
+    width: 1em;
+  }
+
+  @include m(color) {
+    color: aqua;
+    @include e(item) {
+      width: 0.5rem;
+    }
+  }
+
+  @include e(white, black, origin, blue) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include share-rule(color-shared) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  @include e(white) {
+    @include extend-rule(color-shared);
+  }
+  @include e(black) {
+    @include extend-rule(color-shared);
+  }
+
+  @include e(item) {
+    @include m(primary, err) {
+      color: red;
+    }
+  }
+
+  // @include pseudo(hover) {
+  //   @include e(side) {
+  //     color: blueviolet;
+  //   }
+  // }
+  // @include when(click) {
+  //   @include e(side) {
+  //     color: darkcyan;
+  //   }
+  // }
+  &:focus + .icon__item {
+    position: inherit;
+  }
+
+  @include pseudo(focus) {
+    @include spec-selector("+", item) {
+      position: inherit;
+    }
+  }
+  // %share {
+  //   position: absolute;
+  //   left: 50%;
+  //   top: 50%;
+  // }
+
+  // @include e(item) {
+  //   @extend %share;
+  // }
+  // @include e(right) {
+  //   @extend %share;
+  // }
+
+  // @include pseudo(blank) {
+  //   @extend %share;
+  // }
+
+  // @include when(hover) {
+  //   @include spec-selector("~", top) {
+  //     @extend %share;
+  //   }
+  // }
+  @include share-rule(position) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+  @include e(item) {
+    @include extend-rule(position);
+  }
+}
+
+// .box {
+//   %share-test {
+//     position: absolute;
+//     left: 50%;
+//     top: 50%;
+//   }
+// }
+
+// .test1 {
+//   @extend %share-test;
+//   color: antiquewhite;
+// }
+// .test2 {
+//   @extend %share-test;
+// }
+// .test3 {
+//   @extend %share-test;
+// }
