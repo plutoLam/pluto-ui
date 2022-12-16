@@ -1,6 +1,6 @@
 import Button from "../Button.vue";
 
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, mount } from "@vue/test-utils";
 import { describe, expect, test } from "vitest";
 // 测试分组
 describe("Button", () => {
@@ -17,32 +17,79 @@ describe("Button", () => {
   });
 });
 
-describe("color", () => {
-  test("default", () => {
-    const wrapper = shallowMount(Button, {
+// type: primary | success | warning | danger | info | text
+describe("Button class", () => {
+  test("set button primary", () => {
+    const wrapper = mount(Button, {
       slots: {
         default: "Button",
       },
+      props: {
+        type: "primary",
+      },
     });
-    console.log("classes", wrapper.classes());
-    expect(wrapper.classes()[0]).toBe("pl-button--primary");
+    expect(wrapper.classes()).toContain("pl-button--primary");
   });
-  // test("red", () => {
-  //   const wrapper = shallowMount(Button, {
-  //     slots: {
-  //       default: "Button",
-  //     },
-  //     props: {
-  //       color: "red",
-  //     },
-  //   });
-  //   expect(
-  //     wrapper
-  //       .classes()
-  //       .map((v) => v.replace("\n", ""))
-  //       .includes("bg-red-500")
-  //   ).toBe(true);
-  // });
+  // size: medium | small  | mini;
+  test("set button size", () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: "Button",
+      },
+      props: {
+        size: "medium",
+      },
+    });
+    expect(wrapper.classes()).toContain("pl-button--medium");
+  });
+  test("button round", () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: "Button",
+      },
+      props: {
+        round: true,
+      },
+    });
+    expect(wrapper.classes()).toContain("is-round");
+  });
+
+  test("set button plain", () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: "Button",
+      },
+      props: {
+        plain: true,
+      },
+    });
+    expect(wrapper.classes()).toContain("is-plain");
+  });
+
+  test("set button circle", () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: "Button",
+      },
+      props: {
+        circle: true,
+      },
+    });
+    expect(wrapper.classes()).toContain("is-circle");
+  });
+
+  test("set button disabled", () => {
+    const wrapper = mount(Button, {
+      slots: {
+        default: "Button",
+      },
+      props: {
+        disabled: true,
+      },
+    });
+    expect(wrapper.classes()).toContain("is-disabled");
+    console.log(wrapper.attributes());
+  });
 });
 
 // describe("size", () => {

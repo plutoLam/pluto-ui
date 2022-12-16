@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { computed, withDefaults } from "vue";
+import { useNamespace } from "../../hooks";
+const ls = useNamespace("button");
+import { withDefaults } from "vue";
 // 按钮类型
 type ButtonType =
   | "primary"
@@ -8,30 +10,39 @@ type ButtonType =
   | "danger"
   | "info"
   | "text";
-
+type ButtonSize = "medium" | "small" | "mini";
 interface ButtonProps {
   type?: ButtonType;
+  size?: ButtonSize;
+  round?: boolean;
+  plain?: boolean;
+  circle?: boolean;
+  disabled?: boolean;
 }
 
-const props = withDefaults(defineProps<ButtonProps>(), {
-  type: "primary",
-});
-
-const useClasses = ({ props }) => {
-  return computed(() => {
-    return [props.type ? `pl-button--${props.type}` : ``];
-  });
-};
-
-const classes = useClasses({
-  props,
-});
+withDefaults(defineProps<ButtonProps>(), {});
+// console.log("props", props);
 </script>
 
 <template>
-  <button :class="classes">
+  <button
+    :class="[
+      ls.b(),
+      ls.m(type),
+      ls.m(size),
+      ls.is('round', round),
+      ls.is('plain', plain),
+      ls.is('circle', circle),
+      ls.is('disabled', disabled),
+    ]"
+    :disabled="disabled"
+  >
     <span v-if="$slots.default">
       <slot />
     </span>
   </button>
 </template>
+
+<style lang="sass">
+@import "../../theme/src/button"
+</style>

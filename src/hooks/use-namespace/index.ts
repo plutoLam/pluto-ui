@@ -24,6 +24,7 @@ const _bem = (
   if (modifier) {
     cls += `--${modifier}`;
   }
+  // console.log('cls: ', cls);
   return cls;
 };
 
@@ -50,16 +51,20 @@ export const useNamespace = (block: string) => {
       ? _bem(unref(namespace), block, "", element, modifier)
       : "";
   // 创建块前缀修改器 例如：el-form-item--default
-  const bm = (blockSuffix?: string, modifier?: string) =>
-    blockSuffix && modifier
+  const bm = (blockSuffix?: string, modifier?: string) => {
+    // console.log("modifier: ", modifier);
+    // console.log("blockSuffix: ", blockSuffix);
+    return blockSuffix && modifier
       ? _bem(unref(namespace), block, blockSuffix, "", modifier)
       : "";
+  };
   // 创建块元素修改器 例如：el-form-item__content--xxx
   const bem = (blockSuffix?: string, element?: string, modifier?: string) =>
     blockSuffix && element && modifier
       ? _bem(unref(namespace), block, blockSuffix, element, modifier)
       : "";
   // 动作状态 例如：is-success is-required
+  // 如果没有传入第二个参数，则默认这个状态一直存在
   const is: {
     (name: string, state: boolean | undefined): string;
     (name: string): string;

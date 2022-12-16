@@ -1,7 +1,7 @@
 @import "function";
 @import "config";
 @mixin b($block) {
-  $B: $block !global;
+  $B: $namespace + "-" + $block !global;
   .#{$B} {
     @content;
   }
