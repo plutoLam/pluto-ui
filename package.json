@@ -15,7 +15,8 @@
     "test:run": "vitest run",
     "lint": "eslint --fix --ext .ts,.tsx,.vue src",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.vue\"",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
