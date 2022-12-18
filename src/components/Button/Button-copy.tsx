@@ -48,8 +48,9 @@ export default defineComponent({
       rounded-${props.round ? "99" : "lg"}
       bg-${props.color}-${props.plain ? "100" : "500"}
       hover:bg-${props.color}-400
-      border-${props.plain ? props.color : "black"}-${props.plain ? "500" : "500"
-          }
+      border-${props.plain ? props.color : "black"}-${
+          props.plain ? "500" : "500"
+        }
       cursor-pointer
       border-solid
       text-${props.plain ? props.color + "-500" : "white-500"}

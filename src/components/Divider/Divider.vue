@@ -10,7 +10,7 @@ interface DividerProps {
   dark?: boolean;
 }
 
-const props = withDefaults(defineProps<DividerProps>(), {
+withDefaults(defineProps<DividerProps>(), {
   direction: "horizontal",
   contentPosition: "center",
   dividerStyle: "solid",

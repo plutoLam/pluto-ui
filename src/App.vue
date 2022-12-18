@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { PlButton } from "./components/Button";
-import { PlIcon } from "./components/Icon";
 </script>
 
 <template>

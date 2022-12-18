@@ -65,10 +65,7 @@ export const useNamespace = (block: string) => {
       : "";
   // 动作状态 例如：is-success is-required
   // 如果没有传入第二个参数，则默认这个状态一直存在
-  const is: {
-    (name: string, state: boolean | undefined): string;
-    (name: string): string;
-  } = (name: string, ...args: [boolean | undefined] | []) => {
+  const is = (name: string, ...args: [boolean | undefined] | []) => {
     const state = args.length >= 1 ? args[0]! : true;
     return name && state ? `${statePrefix}${name}` : "";
   };

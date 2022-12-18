@@ -1,5 +1,5 @@
-#!/bin/sh
-# . "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-echo ====代码静态检查====
+echo -----代码规范检测------
 pnpm lint
