@@ -2,7 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import { config } from "../vite.config";
 import { build, InlineConfig, defineConfig, UserConfig } from "vite";
-import { generateDTS } from "./type";
+// import { generateDTS } from "./type";
 const buildAll = async () => {
   // const inline: InlineConfig =
   //   viteConfig;
@@ -32,9 +32,9 @@ const buildAll = async () => {
     path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
   );
   // 生成配置DTS配置文件入口
-  generateDTS(
-    path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
-  );
+  // generateDTS(
+  //   path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
+  // );
 
   // 分块打包
   const srcDir = path.resolve(__dirname, "../src/");
