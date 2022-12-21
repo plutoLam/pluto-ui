@@ -8,10 +8,10 @@ const buildAll = async () => {
   //   viteConfig;
 
   // 全量打包
-  await build(defineConfig(config as UserConfig) as InlineConfig);
+  await build();
 
   const baseOutDir = config.build.outDir;
-  console.log("baseOutDir: ", baseOutDir);
+  // console.log("baseOutDir: ", baseOutDir);
   const packageJson = require("../package.json");
   packageJson.main = "pluto-ui.umd.js";
   packageJson.module = "pluto-ui.esm.js";
@@ -27,17 +27,17 @@ const buildAll = async () => {
     path.resolve("./readme.md"),
     path.resolve(baseOutDir + "/readme.md")
   );
-  console.log(
-    "path",
-    path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
-  );
+  // console.log(
+  //   "path",
+  //   path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
+  // );
   // 生成配置DTS配置文件入口
   // generateDTS(
   //   path.normalize(path.resolve(config.build.outDir, `pluto-ui.esm.js`))
   // );
 
   // 分块打包
-  const srcDir = path.resolve(__dirname, "../src/");
+  const srcDir = path.resolve(__dirname, "../src/components");
   fs.readdirSync(srcDir)
     .filter((name) => {
       // 只要目录不要文件，且里面包含index.ts

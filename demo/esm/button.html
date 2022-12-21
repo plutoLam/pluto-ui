@@ -4,20 +4,19 @@
 <script type="module">
   import { createApp } from "vue/dist/vue.esm-bundler.js";
   import {
-    MyButton,
-    JSXButton,
-    SFCButton,
+    // MyButton,
+    // JSXButton,
+    // SFCButton,
+    PlButton
   } from "../../dist/pluto-ui.esm.js";
 
   createApp({
     template: `
-    <LButton color="red" icon="search">红色按钮</LButton>
-    <JSXButton/>
-    <SFCButton/>
+    <div>
+      <pl-button>普通按钮</pl-button>  
+    </div>
 `,
   })
-    .component(SFCButton.name, SFCButton)
-    .component(JSXButton.name, JSXButton)
-    .component(MyButton.name, MyButton)
+    .component('PlButton', PlButton)
     .mount("#app");
 </script>
