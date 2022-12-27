@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { useNamespace } from "../../hooks";
+import { useNamespace } from "@pluto-ui/hooks";
 const bem = useNamespace("icon");
 
 import { computed, withDefaults } from "vue";
@@ -38,7 +38,3 @@ const style = computed<CSSProperties>(() => {
 //   props,
 // });
 </script>
-
-<style lang="scss">
-@import "../../theme/src/icon.scss";
-</style>

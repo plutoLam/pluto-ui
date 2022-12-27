@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useNamespace } from "../../hooks";
+import { useNamespace } from "@pluto-ui/hooks";
 const ls = useNamespace("divider");
 import { withDefaults } from "vue";
 interface DividerProps {
@@ -38,7 +38,3 @@ withDefaults(defineProps<DividerProps>(), {
     </div>
   </div>
 </template>
-
-<style lang="sass">
-@import "../../theme/src/divider"
-</style>

@@ -1,5 +1,5 @@
 import Divider from "../Divider.vue";
-import { useNamespace } from "../../../hooks";
+import { useNamespace } from "@pluto-ui/hooks";
 const ls = useNamespace("divider");
 import { mount } from "@vue/test-utils";
 import { describe, expect, test } from "vitest";

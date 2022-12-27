@@ -1,5 +1,5 @@
 import { App } from "vue";
-import { PlButton } from "./components/Button";
+import { PlButton } from "../packages/components/src/Button";
 import { PlDivider } from "./components/Divider";
 
 // 导出单独组件

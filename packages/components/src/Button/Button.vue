@@ -1,7 +1,11 @@
 <script lang="ts" setup>
-import { useNamespace } from "../../hooks";
+import { useNamespace } from "@pluto-ui/hooks";
 const ls = useNamespace("button");
 import { withDefaults } from "vue";
+
+// defineOptions({
+//   name: "PlButton",
+// });
 // 按钮类型
 type ButtonType =
   | "primary"
@@ -42,7 +46,3 @@ withDefaults(defineProps<ButtonProps>(), {});
     </span>
   </button>
 </template>
-
-<style lang="sass">
-@import "../../theme/src/button"
-</style>

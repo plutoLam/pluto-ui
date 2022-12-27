@@ -1,0 +1,47 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "pluto-ui",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC"
+    },
+    "prefix": "D:\\1-front-end\\Engineering\\pluto-ui\\packages\\pluto-ui"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "D:\\.pnpm-store\\v3",
+    "virtualStoreDir": "D:\\1-front-end\\Engineering\\pluto-ui\\packages\\pluto-ui\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "D:\\1-front-end\\Engineering\\pluto-ui\\packages\\pluto-ui",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "@pluto-ui/components is not in the npm registry, or you have no permission to fetch it.\n\nNo authorization header was set for the request.",
+    "request": {
+      "url": "https://registry.npm.taobao.org/@pluto-ui%2Fcomponents"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "@pluto-ui/components",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npm.taobao.org/@pluto-ui%2Fcomponents: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npm.taobao.org/@pluto-ui%2Fcomponents: Not Found - 404\n    at RetryOperation._fn (C:\\Users\\Pluto\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:85709:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+    }
+  }
+}

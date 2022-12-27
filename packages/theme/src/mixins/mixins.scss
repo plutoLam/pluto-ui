@@ -1,0 +1,99 @@
+@import "function";
+@import "config";
+@mixin b($block) {
+  $B: $namespace + "-" + $block !global;
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element...) {
+  $selector: &; // &前面是带.的
+  $E: $element !global;
+  $currentSelector: "";
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+  // @debug $currentSelector;
+  @if hitAllSpecialNestRule($selector) {
+    // 如果这是一个b--m，也就是先走了@mixin m()函数，里面就变成b--m嵌套b__e
+    @at-root {
+      // b--m
+      #{$selector} {
+        // @debug "selector" + $selector;
+        // b__e
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      // @at-root 指规则跳出嵌套，写在最外层
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin m($modifier...) {
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $modifier {
+    // 这里$selector带了. ，不用加 .
+    $currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ","};
+  }
+  @debug $currentSelector;
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin when($state) {
+  $selector: &;
+  @at-root {
+    // 这里不是拼接，而是使用兄弟
+    #{$selector + "." + $state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+@mixin pseudo($pseudo) {
+  $selector: &;
+  @at-root {
+    #{$selector + ":" + $pseudo} {
+      @content;
+    }
+  }
+}
+
+@mixin spec-selector($specSelector: "", $element: $E, $modifier: false, $block: $B) {
+  $modifierCombo: "";
+  // 判断输出的是 b__e 还是 b__e--m
+  @if $modifier {
+    // 如果是b__e--m，就将m接上
+    $modifierCombo: $modifier-separator + $modifier;
+  }
+
+  @at-root {
+    // 默认是父级用特殊符号接上目前的b__e(--m)，bem都是可选的，
+    #{&}#{$specSelector}.#{$block + $element-separator + $element + $modifierCombo} {
+      @content;
+    }
+  }
+}
+
+@mixin share-rule($name) {
+  $rule-name: "%shared-" + $name;
+  @at-root #{$rule-name} {
+    @content;
+  }
+}
+
+@mixin extend-rule($name) {
+  @extend #{"%shared-" + $name};
+}
