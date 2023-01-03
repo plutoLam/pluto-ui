@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   root: true,
   env: {
     browser: true,
@@ -31,3 +31,4 @@ module.exports = {
     "linebreak-style": "off", // 忽略换行符
   },
 };
+export default config;

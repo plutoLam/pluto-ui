@@ -1,12 +1,9 @@
 {
   "name": "@pluto-ui/theme",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "The css of pluto-ui",
   "main": "index.scss",
   "module": "index.scss",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC"

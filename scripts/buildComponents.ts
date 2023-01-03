@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import path from "path";
-import config from "../packages/components/vite.config";
+import config from "pluto-ui/vite.config";
 import {
   build,
   InlineConfig,
@@ -13,6 +13,23 @@ export default async function buildComponents() {
   // 全量打包组件
   await build(config);
 
+  const packageJson = require("../packages/pluto-ui/package.json");
+  packageJson.main = "pluto-ui.umd.js";
+  packageJson.module = "pluto-ui.esm.js";
+  // // ts的类型定义入口文件
+  // packageJson.types = "pluto-ui.d.ts";
+  const baseOutDir = config.build.outDir;
+
+  // 拷贝 README.md文件, 必须先创建dist目录
+  fs.copyFileSync(
+    path.resolve(__dirname, "../readme.md"),
+    path.resolve(baseOutDir + "/readme.md")
+  );
+  // 拷贝package.json文件
+  fs.outputFile(
+    path.resolve(baseOutDir, `package.json`),
+    JSON.stringify(packageJson, null, 2)
+  );
   // 分块打包
   const srcDir = path.resolve(__dirname, "../packages/components/src");
   fs.readdirSync(srcDir)
@@ -30,7 +47,7 @@ export default async function buildComponents() {
           entry: path.resolve(srcDir, name),
           name, // 导出模块名
           fileName: `index`,
-          formats: [`esm`, `cjs`],
+          formats: ["esm", "umd", "amd", "cjs"],
         },
         outDir,
       } as BuildOptions;
@@ -42,7 +59,7 @@ export default async function buildComponents() {
       fs.outputFile(
         path.resolve(outDir, `package.json`),
         `{
-          "name": "pluto-ui-vite/${name}",
+          "name": "pluto-ui/${name}",
           "main": "index.umd.js",
           "module": "index.umd.js"
         }`,

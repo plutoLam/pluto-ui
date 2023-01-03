@@ -14,7 +14,7 @@ const rollupOptions = {
     },
   },
 };
-const baseDir = path.resolve(__dirname, "../../dist");
+const baseDir = path.resolve(__dirname, "../../dist/pluto-ui");
 export const config = {
   plugins: [
     // pluginVue(),

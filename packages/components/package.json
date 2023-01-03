@@ -2,16 +2,7 @@
   "name": "@pluto-ui/components",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
-  "module": "index.ts",
-  "keywords": [
-    "pluto-ui",
-    "component library",
-    "ui framework",
-    "ui",
-    "vue"
-  ],
   "scripts": {},
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }
